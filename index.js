@@ -1,5 +1,8 @@
 import store from "./redux/store.js";
+import getCurrentTime from "./redux/utils/getCurrentTime.js";
 
+
+/*
 //console.log(store.getState());
 
 const unsubscribe =  store.subscribe(() => {
@@ -25,3 +28,13 @@ store.dispatch({
     type: 'Clear_All_Times'
 })
 //console.log(store.getState());
+*/
+
+const btn = document.getElementById('btn');
+btn.addEventListener('click', () => {
+    store.dispatch({
+        type: 'Add_Current_Time',
+        payload: getCurrentTime()
+    });
+    console.log(store.getState());
+})
