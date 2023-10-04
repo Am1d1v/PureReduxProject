@@ -1,6 +1,5 @@
 import store from "./redux/store.js";
-import getCurrentTime from "./redux/utils/getCurrentTime.js";
-
+import { addCurrentTime, clearTime } from "./redux/actionCreators.js";
 
 /*
 //console.log(store.getState());
@@ -32,10 +31,7 @@ store.dispatch({
 
 const addTimeBtn = document.getElementById('addTime');
 addTimeBtn.addEventListener('click', () => {
-    store.dispatch({
-        type: 'Add_Current_Time',
-        payload: getCurrentTime()
-    });
+    store.dispatch(addCurrentTime());
     console.log(store.getState());
 })
 
@@ -50,3 +46,10 @@ store.subscribe(() => {
         timesList.appendChild(li);
    })
 })
+
+
+const clearTimeBtn = document.getElementById('clearTime');
+clearTimeBtn.addEventListener('click', () => {
+    store.dispatch(clearTime());
+    console.log(store.getState());
+});
